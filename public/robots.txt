@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://patriciaperlati.com.br/sitemap.xml
+

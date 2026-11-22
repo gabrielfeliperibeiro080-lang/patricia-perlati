@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   RESET E BASE GLOBAL
+   ============================================================ */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-body text-mocha bg-offwhite;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Previne zoom automático indesejado no iOS Safari ao focar inputs */
+  @media screen and (max-width: 768px) {
+    input, textarea, select {
+      font-size: 16px !important;
+    }
+  }
+
+  /* Preferência por movimento reduzido */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Foco acessível */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-olive-dark rounded;
+  }
+}
+
+/* ============================================================
+   TIPOGRAFIA GLOBAL
+   ============================================================ */
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* ============================================================
+   COMPONENTES REUTILIZÁVEIS
+   ============================================================ */
+@layer components {
+  /* Botão primário */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[46px] bg-olive-dark text-offwhite font-body font-medium text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 hover:bg-olive hover:tracking-widest2 active:scale-[0.98] select-none;
+  }
+
+  /* Botão secundário (outline) */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[46px] border border-olive-dark text-olive-dark font-body font-medium text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 hover:bg-olive-dark hover:text-offwhite active:scale-[0.98] select-none;
+  }
+
+  /* Linha decorativa */
+  .decorative-line {
+    @apply block w-10 sm:w-12 h-px bg-olive my-4 sm:my-6;
+  }
+
+  /* Rótulo de seção */
+  .section-label {
+    @apply font-body text-[11px] sm:text-xs font-medium tracking-widest2 uppercase text-olive mb-3 sm:mb-4;
+  }
+
+  /* Container editorial */
+  .editorial-container {
+    @apply max-w-7xl mx-auto px-5 sm:px-6 md:px-12 lg:px-16;
+  }
+
+  /* Seção com padding generoso */
+  .section-padding {
+    @apply py-14 sm:py-20 md:py-32 lg:py-40;
+  }
+
+  /* Imagem de placeholder elegante */
+  .photo-placeholder {
+    @apply bg-beige flex items-center justify-center relative overflow-hidden;
+  }
+
+  .photo-placeholder::after {
+    content: attr(data-label);
+    @apply absolute text-xs font-body text-mocha/50 tracking-widest uppercase text-center px-4;
+  }
+}
+
+/* ============================================================
+   UTILIDADES CUSTOMIZADAS
+   ============================================================ */
+@layer utilities {
+  /* Texto com espaçamento de letras editorial */
+  .text-editorial {
+    letter-spacing: 0.15em;
+  }
+
+  /* Clip para revelar imagens */
+  .clip-reveal {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .clip-reveal-done {
+    clip-path: inset(0 0% 0 0);
+  }
+
+  /* Overlay sutil */
+  .overlay-olive {
+    background: linear-gradient(135deg, rgba(53, 67, 55, 0.6) 0%, rgba(53, 67, 55, 0.2) 100%);
+  }
+
+  .overlay-warm {
+    background: linear-gradient(135deg, rgba(117, 107, 96, 0.4) 0%, rgba(237, 230, 220, 0.1) 100%);
+  }
+
+  /* Scroll suave para seções */
+  .smooth-scroll {
+    scroll-margin-top: 100px;
+  }
+}
+
+/* ============================================================
+   BARRA DE SCROLL CUSTOMIZADA
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F6F1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #78816C;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   SELEÇÃO DE TEXTO
+   ============================================================ */
+::selection {
+  background: #354337;
+  color: #F8F6F1;
+}
